@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/updateData" method="post">
+        <input hidden type="text" value="<%= editData.id%>" placeholder="Enter id" name="id">
+        <input type="text" value="<%= editData.category%>" placeholder="Enter company name" name="category">
+        <input type="text" value="<%= editData.title%>" placeholder="Enter model name" name="title">
+        <input type="text" value="<%= editData.price%>" placeholder="Enter price" name="price">
+        <button type="submit">Update Data</button>
+    </form>
+</body>
+
+</html>

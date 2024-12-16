@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="bookStore.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    .txtDiv {
+        position: relative;
+        top: 0px;
+    }
+
+    .customDiv {
+        height: 100px;
+        width: 50px;
+        /* border: 1px solid black; */
+        position: absolute;
+        top: 50px;
+        right: -30px;
+        opacity: 0;
+        transition-duration: 0.5s;
+    }
+
+    .subDiv:hover .customDiv {
+        opacity: 1;
+        right: 0px;
+    }
+
+    .editIcon {
+        height: 40px;
+        width: 40px;
+        border: 1px solid white;
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+    }
+
+    .editIcon:hover {
+        background-color: #399043;
+        color: #e6f9eb;
+    }
+
+    .deleteIcon {
+        height: 40px;
+        width: 40px;
+        border: 1px solid white;
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        margin-top: 15px;
+    }
+
+    .deleteIcon:hover {
+        background-color: #d32f2f;
+        color: #fdecea;
+    }
+
+    input {
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid black;
+    }
+</style>
+
+
+<body class="bg-white">
+
+    <header class="h-[100px] flex items-center w-[100%] bg-[#1B3A4B]">
+        <nav class="flex justify-between items-center">
+            <div class="nav1 ms-[30px] h-[85px] w-[85px] flex items-center">
+                <img src="/logo.png" alt="">
+            </div>
+            <div class="nav2"></div>
+        </nav>
+    </header>
+    <br>
+    <br>
+
+    <div class="addData flex justify-center">
+        <form action="/addData" method="post" class="w-[25%]">
+            <p class="text-2xl text-black text-center">Add New Book</p>
+            <br>
+            <input type="text" class="ps-[10px]" placeholder="Enter book name" name="title"> <br><br>
+            <input type="text" class="ps-[10px]" placeholder="Enter writer name" name="writer"><br><br>
+            <input type="number" class="ps-[10px]" placeholder="Enter price" name="price"><br><br>
+            <input type="text" class="ps-[10px]" placeholder="Enter Language" name="language"><br><br>
+            <center><button type="submit" class="h-[45px] w-[130px] text-white bg-[#1B3A4B] rounded-[5px]">Add Data</button></center>
+        </form>
+    </div>
+    <br><br>
+
+    <div class="mainDiv flex gap-[30px] ms-[1%] flex-wrap">
+
+        <%data.map((e,i)=>{%>
+            <div class="subDiv w-[23%] pt-[30px] pb-[30px] rounded-[10px] bg-[#1B3A4B] text-white">
+                <center>
+                    <img class="h-[35vh]" src="<%=e.image%>" alt="">
+                </center>
+                <div class="txtDiv pt-[15px] px-[10px]">
+                    <p>Title: <%=e.title%>
+                    </p>
+                    <p>Writer: <%=e.writer%>
+                    </p>
+                    <p>Price: ₹<%=e.price%>
+                    </p>
+                    <p>Language: <%=e.language%>
+                    </p>
+
+                    <div class="customDiv">
+                        <a href="/editData/<%=e.id%>">
+                            <div class="editIcon">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </div>
+                        </a>
+
+                        <a href="/deleteData?id=<%=e.id%>">
+                            <div class="deleteIcon">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <%})%>
+    </div>
+</body>
+
+</html>

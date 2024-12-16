@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <form action="/addData" method="post">
+        <input type="text" placeholder="Enter company name" name="category">
+        <input type="text" placeholder="Enter model name" name="title">
+        <input type="text" placeholder="Enter price" name="price">
+        <button type="submit">Add Data</button>
+    </form>
+
+    <div class="mainDiv flex gap-[20px] flex-wrap">
+        
+        <table>
+            <tr>
+                <td>No.</td>
+                <td>Company`s Name</td>
+                <td>Model`s Name</td>
+                <td>Price</td>
+                <td>Actions</td>
+            </tr>
+
+            <%data.map((e,i)=>{%>
+                <tr>
+                    <td><%= e.id%></td>
+                    <td><%= e.category%></td>
+                    <td><%= e.title%></td>
+                    <td><%= e.price%></td>
+                    <td>
+                        <button><a href="/editData/<%=e.id%>">Edit</a></button>
+                        <button><a href="/deleteData?id=<%=e.id%>">Delete</a></button>
+                    </td>
+                </tr>
+            <%})%>
+        </table>
+    </div>
+</body>
+
+</html>

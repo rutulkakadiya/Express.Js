@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    input {
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+
+    <header class="h-[100px] flex items-center w-[100%] bg-[#1B3A4B]">
+        <nav class="flex justify-between items-center">
+            <div class="nav1 ms-[30px] h-[85px] w-[85px] flex items-center">
+                <img src="/logo.png" alt="">
+            </div>
+            <div class="nav2"></div>
+        </nav>
+    </header>
+<br><br><br><br><br>
+    <div class="editData flex justify-center w-[100%]">
+        <form action="/updateData" method="post" class="w-[25%]">
+            <p class="text-2xl text-black text-center">Edit Book Data</p>
+            <br>
+            <input hidden type="text" value="<%= singleData.id%>" placeholder="Enter id" name="id" id="">
+            <input type="text" class="ps-[10px]" value="<%= singleData.title%>" placeholder="Enter book name" name="title"> <br><br>
+            <input type="text" class="ps-[10px]" value="<%= singleData.writer%>" placeholder="Enter writer name" name="writer"><br><br>
+            <input type="number" class="ps-[10px]" value="<%= singleData.price%>" placeholder="Enter price" name="price"><br><br>
+            <input type="text" class="ps-[10px]" value="<%= singleData.language%>" placeholder="Enter Language" name="language"><br><br>
+            <center><button type="submit" class="h-[45px] w-[130px] text-white bg-[#1B3A4B] rounded-[5px]">Update Data</button></center>
+        </form>
+    </div>
+
+</body>
+
+</html>
